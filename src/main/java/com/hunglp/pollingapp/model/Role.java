@@ -1,10 +1,16 @@
 package com.hunglp.pollingapp.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="roles")
 public class Role {
@@ -19,28 +25,5 @@ public class Role {
     @Column(length = 60)
     private RoleName name;
 
-    public Role(Long id, RoleName name) {
-        this.id = id;
-        this.name = name;
-    }
 
-    public Role() {
-
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public RoleName getName() {
-        return name;
-    }
-
-    public void setName(RoleName name) {
-        this.name = name;
-    }
 }
