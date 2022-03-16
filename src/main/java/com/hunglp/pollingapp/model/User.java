@@ -30,10 +30,14 @@ public class User extends DateAudit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @NotBlank
     @Size(max = 40)
     private String name;
+
+
+    @NotBlank
+    @Size(max = 15)
+    private String username;
 
     @NaturalId
     @Size(max = 40)
