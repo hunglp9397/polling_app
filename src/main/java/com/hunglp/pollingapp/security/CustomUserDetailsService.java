@@ -1,6 +1,7 @@
 package com.hunglp.pollingapp.security;
 
 
+import com.hunglp.pollingapp.exception.ResourceNotFoundException;
 import com.hunglp.pollingapp.model.User;
 import com.hunglp.pollingapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,14 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         return UserPrincipal.create(user);
 
+    }
 
+    @Transactional
+    public UserDetails loadUserById(Long id) {
+        User user = userRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("User", "id", id)
+        );
 
-
+        return UserPrincipal.create(user);
     }
 }
